@@ -50,3 +50,7 @@ GitHub 저장소 Settings → Pages → Build and deployment에서 Source를 **D
 인트로 하단과 About 상단은 동일한 `#7fc4ff` 색상을 기준으로 그라디언트로 연결했습니다. 이름 표기는 SEONIN으로 통일했습니다.
 
 추가 참조 주소 https://www.crechetank.com/ 는 현재 환경에서 HTTP 403으로 차단되어 확인하지 못했습니다. 해당 사이트의 화면 또는 영상 제공 시 시각 요소와 전환을 추가로 맞출 수 있습니다.
+
+## 최신 색상 및 Hero
+
+Hero와 About의 공통 물빛은 `theme.css`의 `--ocean-water: #a8d7ff`입니다. 물결 뒤쪽은 같은 하늘색 계열인 `--ocean-surface`, `--ocean-surface-light`를 사용합니다. About 수중 사진에는 파란색 틴트를 적용하고 동일한 경계색으로 연결했습니다. Hero는 흰색 굵은 SEONIN 타이포그래피와 About으로 이동하는 ENTER 버튼으로 구성했습니다. 물 채움 → 이름 등장·굴절 → About 이동·돌고래 등장 순서를 유지합니다.

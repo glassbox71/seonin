@@ -8,9 +8,24 @@
 @media(prefers-reduced-motion:reduce){.water-fill{animation:none;transform:none}.water-identity{opacity:1;transform:none;transition:none}.initials{filter:none;animation:none}.water-controls{display:none}}
 
 .water-intro-bottom{color:#f8f5dd}.water-controls button{border-color:#f8f5dd55;background:#f5f8ef12}.water-controls button:hover{background:#f5f8ef30}.water-controls button:focus-visible,.water-scroll:focus-visible{outline-color:#f8f5dd}
-/* SEONIN is the display name used across every frame. */
-.water-identity h1{font-size:clamp(90px,16vw,245px);letter-spacing:-.075em}.identity-name{margin-top:25px}@media(max-width:700px){.water-identity h1{font-size:clamp(69px,16.5vw,115px)}.identity-name{margin-top:24px}}
-/* Both frames meet on the same blue, with a long soft blend on each side. */
-.water-body{background:linear-gradient(180deg,#9acbc3 0%,#70b5b0 28%,#4b9fac 58%,#66b3df 83%,#7fc4ff 100%)}
-.water-intro:after{content:'';position:absolute;inset:auto 0 0;height:22%;background:linear-gradient(180deg,#7fc4ff00,#7fc4ff);pointer-events:none;z-index:0}
-.water-identity{position:relative;z-index:1}
+
+/* One shared ocean palette for the surface, full water body and About seam. */
+.water-intro{background:var(--ocean-surface);color:#164b6b}
+.water-body{background:var(--ocean-water)}
+.wave-back{fill:var(--ocean-surface-light)}
+.wave-front{fill:var(--ocean-water)}
+.water-light{background:linear-gradient(90deg,transparent,#ffffff08,transparent)}
+.water-identity{position:relative;z-index:1;color:#fff;padding-block:60px;max-width:100%}
+.water-identity h1{font:900 clamp(74px,13.5vw,210px)/1.05 Arial,'Helvetica Neue',sans-serif;letter-spacing:-.065em;padding-right:.055em}
+.initials{color:#fff;text-shadow:none}
+.identity-name{font-size:8px;letter-spacing:3px;margin:22px 0 18px;opacity:.85}
+.hero-enter{pointer-events:auto;display:inline-flex;align-items:center;gap:16px;padding:11px 25px;border-radius:30px;color:#fff;background:#ed643e;font-size:10px;letter-spacing:2px;transition:background .2s,transform .2s}
+.hero-enter:hover{background:#d9502b;transform:translateY(-2px)}
+.hero-enter:focus-visible{outline-color:#164b6b}
+.water-intro:after{content:'';position:absolute;inset:auto 0 0;height:18%;background:linear-gradient(180deg,#a8d7ff00,var(--ocean-water));pointer-events:none;z-index:0}
+.water-intro-top{color:#245c8a}
+.water-intro-bottom{color:#245c8a}
+.water-controls button{border-color:#245c8a50;background:#ffffff25}
+.water-controls button:hover{background:#ffffff50}
+.water-controls button:focus-visible,.water-scroll:focus-visible{outline-color:#164b6b}
+@media(max-width:700px){.water-identity h1{font-size:clamp(59px,13.5vw,105px)}.identity-name{font-size:7px;letter-spacing:2px;margin:18px 0}.hero-enter{font-size:9px;padding:10px 22px}}
