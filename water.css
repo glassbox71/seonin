@@ -8,3 +8,9 @@
 @media(prefers-reduced-motion:reduce){.water-fill{animation:none;transform:none}.water-identity{opacity:1;transform:none;transition:none}.initials{filter:none;animation:none}.water-controls{display:none}}
 
 .water-intro-bottom{color:#f8f5dd}.water-controls button{border-color:#f8f5dd55;background:#f5f8ef12}.water-controls button:hover{background:#f5f8ef30}.water-controls button:focus-visible,.water-scroll:focus-visible{outline-color:#f8f5dd}
+/* SEONIN is the display name used across every frame. */
+.water-identity h1{font-size:clamp(90px,16vw,245px);letter-spacing:-.075em}.identity-name{margin-top:25px}@media(max-width:700px){.water-identity h1{font-size:clamp(69px,16.5vw,115px)}.identity-name{margin-top:24px}}
+/* Both frames meet on the same blue, with a long soft blend on each side. */
+.water-body{background:linear-gradient(180deg,#9acbc3 0%,#70b5b0 28%,#4b9fac 58%,#66b3df 83%,#7fc4ff 100%)}
+.water-intro:after{content:'';position:absolute;inset:auto 0 0;height:22%;background:linear-gradient(180deg,#7fc4ff00,#7fc4ff);pointer-events:none;z-index:0}
+.water-identity{position:relative;z-index:1}

@@ -120,3 +120,42 @@ motionPreference.addEventListener('change', () => {
   syncRipple();
 });
 if (motionPreference.matches) intro.classList.add('is-filled');
+
+const aboutSection = document.querySelector('#about');
+new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) aboutSection.classList.add('about-entered');
+}, { threshold: 0.2 }).observe(aboutSection);
+document.querySelector('#dolphin-replay').addEventListener('click', () => {
+  aboutSection.classList.remove('about-entered');
+  void aboutSection.offsetWidth;
+  aboutSection.classList.add('about-entered');
+});
+
+// Only guide the first downward wheel gesture out of Intro. Other sections,
+// touch scrolling, zoom gestures and dialogs keep their native scrolling.
+let sectionTransition = false;
+let transitionTimer;
+window.addEventListener('wheel', event => {
+  if (event.ctrlKey || event.metaKey || dialog.open || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+  if (sectionTransition) {
+    event.preventDefault();
+    clearTimeout(transitionTimer);
+    transitionTimer = setTimeout(() => { sectionTransition = false; }, 700);
+    return;
+  }
+  const bounds = intro.getBoundingClientRect();
+  if (event.deltaY <= 4 || bounds.top > innerHeight * 0.5 || bounds.bottom < innerHeight * 0.55) return;
+  event.preventDefault();
+  sectionTransition = true;
+  aboutSection.scrollIntoView({ behavior: motionPreference.matches ? 'instant' : 'smooth', block: 'start' });
+  transitionTimer = setTimeout(() => { sectionTransition = false; }, 1000);
+}, { passive: false });
+
+const sectionLinks = document.querySelectorAll('.section-index a');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    sectionLinks.forEach(link => link.setAttribute('aria-current', String(link.hash === `#${entry.target.id}`)));
+  });
+}, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+document.querySelectorAll('main > section').forEach(section => sectionObserver.observe(section));
