@@ -180,14 +180,17 @@ new IntersectionObserver(entries => {
 }, { threshold: 0.15 }).observe(document.querySelector('#contact'));
 
 
-// Reveal the skills only when the shell itself reaches the viewport.
-const skillsClam = document.querySelector('#skills-clam');
-const clamObserver = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) skillsClam.classList.add('skills-open');
-}, { threshold: 0.45 });
-clamObserver.observe(skillsClam);
+// Each skill has its own shell; all unfold on arrival in the Skills section.
+const skillsSection = document.querySelector('#skills');
+const skillShells = document.querySelectorAll('.skill-clams .skills-clam');
+function openSkillShells() {
+  skillShells.forEach(shell => shell.classList.add('skills-open'));
+}
+new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) openSkillShells();
+}, { threshold: 0.22 }).observe(skillsSection);
 document.querySelector('#clam-replay').addEventListener('click', () => {
-  skillsClam.classList.remove('skills-open');
-  void skillsClam.offsetWidth;
-  skillsClam.classList.add('skills-open');
+  skillShells.forEach(shell => shell.classList.remove('skills-open'));
+  void skillsSection.offsetWidth;
+  openSkillShells();
 });
