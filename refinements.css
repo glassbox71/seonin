@@ -1,0 +1,17 @@
+/* Match every character box to 80% of the previous final Contact character. */
+:root{--dolphin-width:24.8vw;--dolphin-height:54.4svh}
+.dolphin-art,.portfolio-dolphin,.contact-dolphin{width:var(--dolphin-width);height:var(--dolphin-height);object-fit:contain;object-position:center bottom}
+.dolphin-art{left:calc(50% - var(--dolphin-width)/2);bottom:10%}.dolphin-shadow{width:var(--dolphin-width);left:calc(50% - var(--dolphin-width)/2);bottom:9%}
+.portfolio-dolphin{left:1%;bottom:18%}.contact-dolphin{left:3%;bottom:15px}
+.dolphin-speech{top:23%;left:34%}
+/* Desaturate the ocean canvas, never the character artwork or skill icons. */
+.ocean-backdrop{filter:saturate(.8)}.water-fill{filter:saturate(.8)}
+/* Replace the pearl with the skill, sitting inside the empty lower bowl. */
+.skill-card .skills-clam .skill-list{top:55%;z-index:5}
+.skill-card .skills-clam .skill-list li{font-size:9px;gap:5px;text-shadow:0 1px 4px #fff}
+.skill-card .skill-symbol{width:36px;height:41px;font-size:29px}.skill-card .skill-js{height:36px;font-size:20px}
+.skill-card .skill-figma{width:26px;height:39px;grid-template-columns:13px 13px;grid-template-rows:13px 13px 13px}.skill-card .skill-figma i{width:13px;height:13px}
+@media(max-width:1050px){.skill-card .skill-symbol{width:28px;height:33px;font-size:24px}.skill-card .skill-js{height:28px;font-size:16px}.skill-card .skills-clam .skill-list li{font-size:8px;gap:4px}.skill-card .skill-figma{width:22px;height:33px;grid-template-columns:11px 11px;grid-template-rows:11px 11px 11px}.skill-card .skill-figma i{width:11px;height:11px}}
+@media(max-width:700px){:root{--dolphin-width:160px;--dolphin-height:224px}.dolphin-art{left:calc(50% - 80px);bottom:0}.dolphin-shadow{left:calc(50% - 80px);bottom:0}.portfolio-dolphin{left:-10px;bottom:0}.contact-dolphin{left:0;bottom:0}.dolphin-speech{top:0;left:auto;right:4%}.skill-card .skills-clam .skill-list{top:53%}.skill-card .skill-symbol{width:29px;height:34px;font-size:24px}.skill-card .skill-js{height:29px;font-size:17px}.skill-card .skills-clam .skill-list li{font-size:8px;gap:4px}}
+@media(max-width:600px){.dolphin-scene{height:260px}.dolphin-art{width:160px;height:224px;left:calc(50% - 80px);bottom:0}}
+@media(max-width:360px){.skill-card .skill-symbol{width:25px;height:30px;font-size:21px}.skill-card .skill-js{height:25px;font-size:15px}.skill-card .skills-clam .skill-list li{font-size:7px;gap:3px}.skill-card .skill-figma{width:20px;height:30px;grid-template-columns:10px 10px;grid-template-rows:10px 10px 10px}.skill-card .skill-figma i{width:10px;height:10px}}

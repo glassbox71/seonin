@@ -34,3 +34,9 @@ Haevichi는 기존 https://github.com/glassbox71/haevichi-tt 저장소에 연결
 예정 주소: https://glassbox71.github.io/seonin/
 
 GitHub Settings → Pages에서 Source를 **Deploy from a branch**, Branch를 **main**, 경로를 **/(root)**로 선택하면 정적 파일을 게시할 수 있습니다. `.nojekyll`을 포함합니다. Pages 활성화와 공개 주소 접속은 제작 환경에서 검증하지 못했습니다.
+
+## 캐릭터·스킬 조개·채도 조정
+
+`refinements.css`에서 돌고래 3곳을 직전 Contact 돌고래 크기의 80%로 통일했습니다. 데스크톱의 공통 표시 영역은 24.8vw × 54.4svh, 모바일은 160 × 224px입니다. About은 미소와 인사, Portfolio는 윙크와 헤엄, Contact는 눈을 감은 감사 인사로 표정과 동작을 구분한 별도 투명 이미지입니다.
+
+Skills에는 진주를 제거한 `shell-empty.png`를 사용하고, 아이콘을 하단 조개 내부에 배치합니다. Portfolio의 진주 조개는 별도 이미지로 유지합니다. 바다 배경과 Hero의 물에만 `filter: saturate(.8)`을 적용해 배경 채도를 20% 낮췄으며, 캐릭터·텍스트·스킬 아이콘에는 이 필터를 적용하지 않습니다.
