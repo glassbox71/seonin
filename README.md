@@ -54,3 +54,9 @@ GitHub 저장소 Settings → Pages → Build and deployment에서 Source를 **D
 ## 최신 색상 및 Hero
 
 Hero와 About의 공통 물빛은 `theme.css`의 `--ocean-water: #a8d7ff`입니다. 물결 뒤쪽은 같은 하늘색 계열인 `--ocean-surface`, `--ocean-surface-light`를 사용합니다. About 수중 사진에는 파란색 틴트를 적용하고 동일한 경계색으로 연결했습니다. Hero는 흰색 굵은 SEONIN 타이포그래피와 About으로 이동하는 ENTER 버튼으로 구성했습니다. 물 채움 → 이름 등장·굴절 → About 이동·돌고래 등장 순서를 유지합니다.
+
+## Portfolio · Contact 수중 프레임
+
+전체 순서는 Intro → About → Portfolio → Contact입니다. 첨부된 후속 프레임을 참고해 `reef.css`에서 파란 수중 Portfolio와 산호 해저 Contact를 구현했습니다. Portfolio의 01·02·03 버튼은 프로젝트 선택을 바꾸고, 조개 버튼은 선택한 프로젝트의 상세 모달을 엽니다. 콘셉트 프로젝트는 예시임을 표시합니다. Contact에는 Skills 아이콘과 연락 안내 버튼을 함께 배치했습니다. 연락처를 임의로 만들지 않았으므로 실제 이메일은 아직 연결되지 않았습니다.
+
+`assets/shell.png` 및 `assets/seabed.png`는 이 화면을 위해 새로 생성한 에셋입니다. 각 프레임에 진입하면 돌고래와 조개가 등장하고, 모션 감소 설정에서는 정적으로 표시됩니다.

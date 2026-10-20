@@ -1,21 +1,10 @@
-const filters = document.querySelectorAll('[data-filter]');
 const projects = document.querySelectorAll('[data-project]');
-filters.forEach(button => button.addEventListener('click', () => {
-  filters.forEach(item => {
-    const active = item === button;
-    item.classList.toggle('active', active);
-    item.setAttribute('aria-pressed', String(active));
-  });
-  projects.forEach(project => {
-    project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter;
-  });
-}));
 
 // Replace concept descriptions and contact details here with verified personal information.
 const details = {
   haevichi: {
     category: '01 / WEB DESIGN', title: 'Haevichi',
-    description: '해비치 호텔 웹사이트 프로젝트입니다. 이 카드의 풍경은 홈페이지 초안용 그래픽이며, 실제 사이트 화면은 아닙니다. 기존 haevichi-tt 저장소에서 HTML, CSS와 인터랙션 작업을 확인할 수 있습니다.',
+    description: '해비치 호텔 웹사이트 프로젝트입니다. 기존 haevichi-tt 저장소에서 HTML, CSS와 인터랙션 작업을 확인할 수 있습니다. 조개 이미지는 프로젝트를 소개하기 위한 그래픽이며 실제 사이트 화면은 아닙니다.',
     link: 'https://github.com/glassbox71/haevichi-tt', linkLabel: '프로젝트 저장소 보기 ↗'
   },
   onul: {
@@ -159,3 +148,33 @@ const sectionObserver = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
 document.querySelectorAll('main > section').forEach(section => sectionObserver.observe(section));
+
+
+const projectSummaries = {
+  haevichi: '쉼의 순간을 담은 호텔 웹사이트',
+  onul: '일상에 초록을 더하는 브랜드 콘셉트',
+  perspective: '새로운 시각을 담은 그래픽 콘셉트'
+};
+document.querySelectorAll('[data-select-project]').forEach(button => {
+  button.addEventListener('click', () => {
+    const key = button.dataset.selectProject;
+    const item = details[key];
+    document.querySelector('#reef-category').textContent = item.category;
+    document.querySelector('#reef-title').textContent = item.title;
+    document.querySelector('#reef-description').textContent = projectSummaries[key];
+    const shell = document.querySelector('.reef-shell');
+    shell.dataset.project = key;
+    shell.setAttribute('aria-label', `${item.title} 프로젝트 상세 보기`);
+    document.querySelectorAll('[data-select-project]').forEach(tab => tab.setAttribute('aria-pressed', String(tab === button)));
+  });
+});
+new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('reef-entered');
+  });
+}, { threshold: 0.15 }).observe(document.querySelector('#portfolio'));
+new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('reef-entered');
+  });
+}, { threshold: 0.15 }).observe(document.querySelector('#contact'));

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="water.css">
   <link rel="stylesheet" href="about.css">
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="reef.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -42,29 +43,22 @@
       <div class="wrap ocean-about-bottom"><span>GO BEYOND THE SURFACE.</span><a href="#portfolio">NEXT / PORTFOLIO ↓</a></div>
     </section>
 
-    <section class="work wrap" id="portfolio" aria-labelledby="work-title">
-      <div class="section-heading"><h2 id="work-title">Portfolio<span>(03)</span></h2><p>생각을 담고, 경험을 만듭니다.</p></div>
-      <div class="filters" role="group" aria-label="프로젝트 분류"><button class="active" aria-pressed="true" data-filter="all">All work <span>03</span></button><button aria-pressed="false" data-filter="web">Web design</button><button aria-pressed="false" data-filter="brand">Branding</button><button aria-pressed="false" data-filter="graphic">Graphic</button></div>
-      <div class="projects">
-        <button class="project project-large" data-category="web" data-project="haevichi">
-          <span class="project-art hotel-art"><span class="art-label">01 / WEB EXPERIENCE</span><span class="hotel-frame"><span class="hotel-nav">HAEVICHI <span>JEJU HOTEL & RESORT</span><span>☰</span></span><span class="hotel-photo"><span class="sun"></span><span class="sea"></span><span class="hotel-copy">A moment<br>to <i>stay.</i><small>일상과 멀어지는, 당신만의 쉼</small></span><span class="hotel-book">EXPLORE HAEVICHI ↗</span></span><span class="hotel-footer">THE BEGINNING OF YOUR PERFECT ESCAPE <span>JEJU, KOREA</span></span></span><span class="art-bottom">A QUIET ESCAPE, BEAUTIFULLY DESIGNED.</span><span class="art-pill">WEB DESIGN</span></span>
-          <span class="project-meta"><span><strong>Haevichi</strong><span>쉼의 순간을 담은 호텔 웹사이트</span></span><span class="project-arrow">↗</span></span>
-        </button>
-        <button class="project" data-category="brand" data-project="onul">
-          <span class="project-art onul-art"><span class="art-label">02 / BRAND EXPLORATION</span><span class="onul-card"><span class="onul-word">onul<span>®</span></span><span class="onul-flower" aria-hidden="true">✳</span><span class="onul-tag">A GOOD DAY<br>STARTS WITH A LITTLE GREEN.</span></span><span class="onul-sticker">오늘을<br>가꾸는 일</span><span class="art-bottom">MAKE ROOM FOR SOMETHING GREEN.</span></span>
-          <span class="project-meta"><span><strong>Onul <small>Concept</small></strong><span>일상에 초록을 더하는 브랜드 탐색</span></span><span class="project-arrow">↗</span></span>
-        </button>
-        <button class="project" data-category="graphic" data-project="perspective">
-          <span class="project-art poster-art"><span class="art-label">03 / VISUAL EXPLORATION</span><span class="poster"><span class="poster-top">A DIFFERENT WAY TO SEE THINGS <span>NO. 001</span></span><span class="poster-title">New<br><i>perspec-</i><br>tives.</span><span class="poster-orbit" aria-hidden="true"></span><span class="poster-bottom">CHANGE YOUR ANGLE.<br>FIND SOMETHING NEW. <span>↗</span></span></span><span class="art-bottom">SAME WORLD. A NEW POINT OF VIEW.</span></span>
-          <span class="project-meta"><span><strong>New perspectives <small>Concept</small></strong><span>익숙한 것을 새롭게 바라보는 시각 실험</span></span><span class="project-arrow">↗</span></span>
-        </button>
+    <section class="work reef-work" id="portfolio" aria-labelledby="work-title">
+      <div class="wrap reef-top"><a href="#intro" class="about-brand">SEONIN</a><span class="intro-chapter">03 / PORTFOLIO</span></div>
+      <div class="wrap reef-project-scene">
+        <img class="portfolio-dolphin" src="assets/beluga.png" alt="포트폴리오를 소개하는 하얀 돌고래" width="1145" height="1374">
+        <div class="reef-project-copy"><h2 id="work-title">Portfolio</h2><p class="reef-intro">작은 아이디어가,<br>새로운 경험이 되는 곳.</p><div class="reef-project-details" aria-live="polite" aria-atomic="true"><span id="reef-category">01 / WEB DESIGN</span><h3 id="reef-title">Haevichi</h3><p id="reef-description">쉼의 순간을 담은 호텔 웹사이트</p></div><div class="reef-project-tabs" role="group" aria-label="프로젝트 선택"><button type="button" data-select-project="haevichi" aria-pressed="true" aria-label="Haevichi 프로젝트 선택">01</button><button type="button" data-select-project="onul" aria-pressed="false" aria-label="Onul 콘셉트 프로젝트 선택">02</button><button type="button" data-select-project="perspective" aria-pressed="false" aria-label="New perspectives 콘셉트 프로젝트 선택">03</button></div><p class="reef-project-note">02 · 03은 콘셉트 예시입니다.</p></div>
+        <button type="button" class="reef-shell" data-project="haevichi" aria-haspopup="dialog" aria-label="Haevichi 프로젝트 상세 보기"><span class="shell-hint">조개를 열어 작업을 만나보세요</span><img src="assets/shell.png" alt="진주가 담긴 조개" width="1024" height="1024"><span class="shell-open">VIEW PROJECT <span>↗</span></span></button>
       </div>
-      <p class="work-note">브랜드·그래픽 카드는 홈페이지 구성을 위한 콘셉트 예시입니다.</p>
+      <div class="wrap reef-bottom"><span>IDEAS BECOME EXPERIENCES.</span><a href="#contact">NEXT / CONTACT ↓</a></div>
     </section>
 
-
-
-    <section class="contact wrap" id="contact" aria-labelledby="contact-title"><div class="eyebrow"><span class="small-spark">✳</span> EVERY CONNECTION IS A NEW BEGINNING</div><div class="contact-main"><h2 id="contact-title">Let’s make<br><em>something good.</em></h2><button class="contact-button" id="contact-button" aria-haspopup="dialog" aria-label="연락 안내 열기">↗</button></div><div class="contact-bottom"><p>새로운 이야기, 좋은 아이디어.<br>함께 나눌 다음을 기다립니다.</p><span>LET’S START A CONVERSATION</span></div></section>
+    <section class="contact reef-contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap reef-top"><a href="#intro" class="about-brand">SEONIN</a><span class="intro-chapter">04 / CONTACT</span></div>
+      <div class="wrap reef-contact-content"><h2 id="contact-title">Contact</h2><p class="reef-contact-subtitle">함께 만들 다음 이야기를 기다립니다.</p><div class="reef-skills" aria-labelledby="skills-title"><h3 id="skills-title">Skills</h3><ul class="skill-list"><li><span class="skill-symbol skill-html" aria-hidden="true">5</span><span>HTML</span></li><li><span class="skill-symbol skill-css" aria-hidden="true">3</span><span>CSS</span></li><li><span class="skill-symbol skill-js" aria-hidden="true">JS</span><span>JavaScript</span></li><li><span class="skill-symbol skill-react" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5"><ellipse cx="32" cy="32" rx="29" ry="11"/><ellipse cx="32" cy="32" rx="29" ry="11" transform="rotate(60 32 32)"/><ellipse cx="32" cy="32" rx="29" ry="11" transform="rotate(120 32 32)"/><circle cx="32" cy="32" r="5" fill="currentColor" stroke="none"/></svg></span><span>React</span></li><li><span class="skill-symbol skill-figma" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Figma</span></li></ul></div><button class="reef-talk" id="contact-button" aria-haspopup="dialog">Let’s talk <span>↗</span></button><p class="reef-contact-note">새로운 연결은 언제나 환영합니다.</p></div>
+      <img class="contact-dolphin" src="assets/beluga.png" alt="인사하는 하얀 돌고래" width="1145" height="1374">
+      <div class="wrap reef-bottom"><a href="#intro">BACK TO THE SURFACE ↑</a><span>THANK YOU FOR DIVING IN.</span></div>
+    </section>
   </main>
   <footer class="footer wrap"><a class="wordmark" href="#">SEONIN<span class="brand-dot">.</span></a><span>© <span id="year">2026</span> SEONIN. MADE WITH CURIOSITY.</span><a href="#">Back to top ↑</a></footer>
   <dialog id="detail-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="닫기">×</button><span class="eyebrow" id="dialog-category"></span><h2 id="dialog-title"></h2><p id="dialog-description"></p><div id="dialog-extra"></div><button class="dialog-done">닫기 ↗</button></dialog>
