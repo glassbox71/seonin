@@ -32,3 +32,13 @@ Intro → About → Portfolio → Contact 순서의 단일 페이지입니다. �
 대상 저장소: https://github.com/glassbox71/seonin
 
 GitHub에 소스를 업로드하는 것과 GitHub Pages에 웹사이트를 게시하는 것은 별개입니다. 정적 호스팅에서는 이 디렉터리의 `index.html`을 진입점으로 사용합니다.
+
+## 워터 인트로
+
+`water.css`와 `script.js`에 인트로를 구현했습니다. 약 3.3초 동안 아래에서 위로 물이 차오른 뒤 YSI(유선인) 이니셜이 나타나고 SVG 굴절 필터와 부유 효과가 이어집니다. 다시 보기·일시정지 버튼을 지원하며, 모션 감소 설정에서는 정적인 이니셜을 바로 표시합니다. 화면 밖이나 숨겨진 탭에서는 굴절 프레임 갱신을 중단합니다.
+
+## 공개 미리보기 (GitHub Pages)
+
+예정 주소: https://glassbox71.github.io/seonin/
+
+GitHub 저장소 Settings → Pages → Build and deployment에서 Source를 **Deploy from a branch**, Branch를 **main**, 경로를 **/(root)**로 선택하고 Save 하세요. `.nojekyll`이 포함되어 있어 정적 파일 그대로 게시됩니다. 이 주소는 Pages가 활성화되고 배포가 끝난 뒤 사용 가능합니다.

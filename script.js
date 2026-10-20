@@ -59,3 +59,64 @@ dialog.addEventListener('click', event => {
 });
 dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+// Fill first, then reveal the initials with a gently changing refraction field.
+const intro = document.querySelector('.water-intro');
+const fill = document.querySelector('.water-fill');
+const turbulence = document.querySelector('#water-ripple feTurbulence');
+const displacement = document.querySelector('#water-ripple feDisplacementMap');
+const pauseButton = document.querySelector('#water-pause');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let rippleFrame = 0;
+let rippleTime = 0;
+let previousTime = 0;
+let introVisible = true;
+
+function stopRipple() {
+  cancelAnimationFrame(rippleFrame);
+  rippleFrame = 0;
+  previousTime = 0;
+}
+function ripple(time) {
+  if (previousTime) rippleTime += Math.min(time - previousTime, 64);
+  previousTime = time;
+  turbulence.setAttribute('baseFrequency', `${0.008 + Math.sin(rippleTime / 2800) * 0.0015} ${0.025 + Math.cos(rippleTime / 3400) * 0.004}`);
+  displacement.setAttribute('scale', String(11 + Math.sin(rippleTime / 1900) * 4));
+  rippleFrame = requestAnimationFrame(ripple);
+}
+function syncRipple() {
+  stopRipple();
+  if (!motionPreference.matches && intro.classList.contains('is-filled') && !intro.classList.contains('is-paused') && introVisible && !document.hidden) {
+    rippleFrame = requestAnimationFrame(ripple);
+  }
+}
+fill.addEventListener('animationend', event => {
+  if (event.animationName !== 'water-rise') return;
+  intro.classList.add('is-filled');
+  syncRipple();
+});
+pauseButton.addEventListener('click', () => {
+  const paused = intro.classList.toggle('is-paused');
+  pauseButton.setAttribute('aria-pressed', String(paused));
+  pauseButton.textContent = paused ? '물결 재생 ▷' : '물결 멈추기 Ⅱ';
+  syncRipple();
+});
+document.querySelector('#water-replay').addEventListener('click', () => {
+  intro.classList.remove('is-filled', 'is-paused');
+  pauseButton.setAttribute('aria-pressed', 'false');
+  pauseButton.textContent = '물결 멈추기 Ⅱ';
+  stopRipple();
+  fill.style.animation = 'none';
+  void fill.offsetWidth;
+  fill.style.animation = '';
+});
+new IntersectionObserver(entries => {
+  introVisible = entries[0].isIntersecting;
+  syncRipple();
+}).observe(intro);
+document.addEventListener('visibilitychange', syncRipple);
+motionPreference.addEventListener('change', () => {
+  if (motionPreference.matches) intro.classList.add('is-filled');
+  syncRipple();
+});
+if (motionPreference.matches) intro.classList.add('is-filled');

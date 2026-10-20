@@ -8,6 +8,7 @@
   <title>유선인 — Personal Portfolio</title>
   <link rel="icon" href="assets/symbol.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="water.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -17,11 +18,12 @@
     <nav aria-label="주 메뉴"><a href="#intro">Intro</a><a href="#about">About</a><a href="#portfolio">Portfolio <span>03</span></a><a class="contact-link" href="#contact">Contact <span>↗</span></a></nav>
   </header>
   <main id="main">
-    <section class="hero wrap" id="intro" aria-labelledby="hero-title">
-      <div class="eyebrow"><span class="small-spark">✳</span> A PERSONAL POINT OF VIEW</div>
-      <h1 id="hero-title">A little curious.<br>A lot of <em>possibilities.</em><span class="hero-spark" aria-hidden="true">✳</span></h1>
-      <div class="hero-bottom"><p>일상의 작은 발견에서 시작해<br>새로운 가능성을 만들어가는, <strong>유선인</strong>입니다.</p><a href="#portfolio" class="round-link" aria-label="작업 살펴보기"><span>EXPLORE MY WORK</span><span class="circle">↓</span></a></div>
-      <div class="hero-foot"><span>PERSONAL PORTFOLIO</span><span>IDEAS, EXPLORATIONS & EVERYTHING IN BETWEEN</span><span>SCROLL TO DISCOVER ↓</span></div>
+    <section class="water-intro" id="intro" aria-labelledby="hero-title">
+      <svg class="filter-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><filter id="water-ripple" x="-20%" y="-25%" width="140%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.008 0.025" numOctaves="2" seed="8" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="13" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
+      <div class="water-intro-top wrap"><span class="eyebrow">SEONIN · PERSONAL PORTFOLIO</span><span class="intro-chapter">01 / INTRO</span></div>
+      <div class="water-fill" aria-hidden="true"><div class="water-body"></div><svg class="water-surface" viewBox="0 0 1440 100" preserveAspectRatio="none"><path class="wave wave-back" d="M-1440 55 Q-1260 0 -1080 55 T-720 55 T-360 55 T0 55 T360 55 T720 55 T1080 55 T1440 55 T1800 55 T2160 55 T2520 55 T2880 55 V110 H-1440Z"/><path class="wave wave-front" d="M-1440 60 Q-1260 100 -1080 60 T-720 60 T-360 60 T0 60 T360 60 T720 60 T1080 60 T1440 60 T1800 60 T2160 60 T2520 60 T2880 60 V110 H-1440Z"/></svg><span class="water-light light-one"></span><span class="water-light light-two"></span></div>
+      <div class="water-identity"><span class="identity-kicker">A NEW WAVE OF POSSIBILITIES</span><h1 id="hero-title"><span class="sr-only">유선인 — YSI</span><span class="initials" aria-hidden="true">YSI<span class="initial-dot">.</span></span></h1><p class="identity-name">YU SEON IN <span>유선인</span></p><p class="identity-description">작은 물결에서 시작되는, 새로운 가능성.</p></div>
+      <div class="water-intro-bottom wrap"><a href="#about" class="water-scroll">아래로 스크롤 <span>↓</span></a><div class="water-controls"><button type="button" id="water-replay" aria-label="물이 차오르는 인트로 다시 보기">다시 보기 ↻</button><button type="button" id="water-pause" aria-pressed="false">물결 멈추기 Ⅱ</button></div></div>
     </section>
 
     <section class="about" id="about" aria-labelledby="about-title"><div class="wrap about-grid"><div class="about-label"><span class="eyebrow">A LITTLE ABOUT ME</span><span class="about-flower" aria-hidden="true">✳</span></div><div><h2 id="about-title">좋은 질문에서 시작해,<br><span>더 나은 경험으로.</span></h2><p>안녕하세요, 유선인입니다.<br>작은 디테일을 관찰하고, 새로운 관점으로 생각하는 것을 좋아합니다.<br>사람과 일상에 자연스럽게 스며드는 경험을 만들어가고 싶습니다.</p><p class="about-draft">소개 초안입니다. 나만의 이야기와 관심 분야로 채워보세요.</p><div class="about-tags"><span>Curiosity</span><span>Thoughtful details</span><span>New perspectives</span></div></div></div></section>
