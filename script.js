@@ -47,7 +47,6 @@ dialog.addEventListener('click', event => {
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
 });
 dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
-document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Fill first, then reveal the initials with a gently changing refraction field.
 const intro = document.querySelector('.water-intro');
@@ -120,25 +119,96 @@ document.querySelector('#dolphin-replay').addEventListener('click', () => {
   aboutSection.classList.add('about-entered');
 });
 
-// Only guide the first downward wheel gesture out of Intro. Other sections,
-// touch scrolling, zoom gestures and dialogs keep their native scrolling.
+// One wheel gesture moves exactly one section, in either direction.
+const pageSections = [...document.querySelectorAll('main > section')];
+let scrollFrame = 0;
 let sectionTransition = false;
-let transitionTimer;
-window.addEventListener('wheel', event => {
-  if (event.ctrlKey || event.metaKey || dialog.open || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
-  if (sectionTransition) {
-    event.preventDefault();
-    clearTimeout(transitionTimer);
-    transitionTimer = setTimeout(() => { sectionTransition = false; }, 700);
+let lastWheelTime = -Infinity;
+let wheelGestureUsed = false;
+let wheelDistance = 0;
+let wheelDirection = 0;
+
+function cancelSectionTransition() {
+  cancelAnimationFrame(scrollFrame);
+  scrollFrame = 0;
+  sectionTransition = false;
+}
+function moveToSection(section) {
+  cancelSectionTransition();
+  const start = window.scrollY;
+  const maximum = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+  const sectionTop = section === pageSections[0] ? 0 : section.getBoundingClientRect().top + start;
+  const destination = Math.min(maximum, Math.max(0, sectionTop));
+  if (motionPreference.matches || Math.abs(destination - start) < 1) {
+    window.scrollTo({ top: destination, behavior: 'instant' });
     return;
   }
-  const bounds = intro.getBoundingClientRect();
-  if (event.deltaY <= 4 || bounds.top > innerHeight * 0.5 || bounds.bottom < innerHeight * 0.55) return;
-  event.preventDefault();
   sectionTransition = true;
-  aboutSection.scrollIntoView({ behavior: motionPreference.matches ? 'instant' : 'smooth', block: 'start' });
-  transitionTimer = setTimeout(() => { sectionTransition = false; }, 1000);
+  const startTime = performance.now();
+  function advance(time) {
+    const progress = Math.min(1, (time - startTime) / 650);
+    const eased = progress < .5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
+    window.scrollTo({ top: start + (destination - start) * eased, behavior: 'instant' });
+    if (progress < 1) scrollFrame = requestAnimationFrame(advance);
+    else {
+      scrollFrame = 0;
+      sectionTransition = false;
+    }
+  }
+  scrollFrame = requestAnimationFrame(advance);
+}
+function nearestSectionIndex() {
+  let index = 0;
+  let distance = Infinity;
+  pageSections.forEach((section, candidate) => {
+    const offset = Math.abs(section.getBoundingClientRect().top);
+    if (offset < distance) { distance = offset; index = candidate; }
+  });
+  return index;
+}
+window.addEventListener('wheel', event => {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || dialog.open || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
+  event.preventDefault();
+  const now = performance.now();
+  const freshGesture = now - lastWheelTime > 220;
+  lastWheelTime = now;
+  if (freshGesture) {
+    wheelGestureUsed = false;
+    wheelDistance = 0;
+    wheelDirection = 0;
+  }
+  // Momentum events belong to the same gesture, even after the move finishes.
+  if (sectionTransition) { wheelGestureUsed = true; return; }
+  if (wheelGestureUsed) return;
+  const direction = Math.sign(event.deltaY);
+  if (direction !== wheelDirection) wheelDistance = 0;
+  wheelDirection = direction;
+  const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1;
+  wheelDistance += Math.abs(event.deltaY) * unit;
+  if (wheelDistance < 8) return;
+  wheelGestureUsed = true;
+  const current = nearestSectionIndex();
+  const next = Math.max(0, Math.min(pageSections.length - 1, current + direction));
+  if (next !== current) moveToSection(pageSections[next]);
 }, { passive: false });
+
+// Menus and section links use the same motion and can interrupt a wheel move.
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const section = pageSections.find(item => `#${item.id}` === link.hash);
+    if (!section) return;
+    event.preventDefault();
+    if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+    moveToSection(section);
+  });
+});
+window.addEventListener('resize', cancelSectionTransition);
+window.addEventListener('popstate', cancelSectionTransition);
+window.addEventListener('touchstart', cancelSectionTransition, { passive: true });
+window.addEventListener('keydown', event => {
+  if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) cancelSectionTransition();
+});
 
 const sectionLinks = document.querySelectorAll('.section-index a');
 const sectionObserver = new IntersectionObserver(entries => {
