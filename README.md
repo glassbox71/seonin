@@ -1,6 +1,6 @@
-# Seonin — 개인 홈페이지
+# SEONIN — 개인 홈페이지
 
-유선인의 반응형 개인 포트폴리오 초안입니다. 프레임워크와 외부 CDN 의존성 없이 HTML, CSS, JavaScript로 동작합니다.
+Intro → About → Portfolio → Contact 순서의 반응형 정적 포트폴리오입니다. 외부 CDN이나 패키지 설치 없이 HTML, CSS, JavaScript로 동작합니다.
 
 ## 실행
 
@@ -9,54 +9,27 @@ cd /workspace/seonin
 python3 -m http.server 8001 --bind 0.0.0.0
 ```
 
-## 수정
+## 현재 화면과 동작
 
-- `index.html`: 이름, 소개, 프로젝트 카드 및 페이지 문구
-- `style.css`: 색상, 타이포그래피, 반응형 레이아웃
-- `script.js`: 프로젝트 상세 내용과 연락 안내
+- `ocean.css`: `assets/seabed.png` 한 장을 전체 페이지의 고정 배경으로 공유합니다. 각 섹션의 개별 배경·색상 오버레이는 제거했습니다. Hero에는 배경보다 밝은 반투명 물이 아래에서 위로 차오릅니다.
+- `water.css`: 약 3.3초 동안 물 채움 → SEONIN 등장·굴절 효과. ENTER 또는 인트로의 아래 방향 마우스 휠 입력으로 About으로 이동합니다. 다시 보기·일시정지와 모션 감소 설정을 지원합니다.
+- `about.css`: 프로필·기술 정보, 진입 시 나타나는 돌고래. 말풍선을 누르면 등장을 다시 재생합니다.
+- `reef.css`: Portfolio의 프로젝트 선택(01·02·03), 조개를 통한 상세 모달, Contact의 기본 배치.
+- Contact의 `#skills-clam`: 조개 자체가 화면에 45% 이상 들어왔을 때 윗뚜껑이 열리고, 내부에서 스킬 아이콘 5개가 순서대로 나타납니다. 다시 열기 버튼을 제공합니다. 모션 감소 설정에서는 열린 조개와 아이콘을 정적으로 표시합니다.
+- `script.js`: 각 인터랙션, 모달, 섹션 표시기. 화면 밖이나 숨겨진 탭에서는 인트로의 굴절 프레임 갱신을 중단합니다.
 
-프로젝트 필터, 상세 모달, 키보드 닫기, 모바일 레이아웃과 모션 감소 설정을 지원합니다.
+## 콘텐츠 및 참조
 
-## 디자인 및 콘텐츠 상태
+제공된 Figma 스크린샷을 참고해 구성했습니다. Figma 링크와 추가 참조 https://www.crechetank.com/ 는 제작 환경에서 HTTP 403으로 차단되어 직접 확인하지 못했습니다.
 
-요청된 Figma 노드 `D6PIKw6amF8tpmEawYCbzd / 1:206`는 제작 환경에서 HTTP 403으로 접근할 수 없어 원본 디자인을 확인하지 못했습니다. 현재 화면은 독립적으로 만든 초안입니다. Figma 스크린샷이나 내보낸 이미지를 받으면 원본에 맞춰 조정해야 합니다.
+`beluga.png`, `underwater.png`, `seabed.png`, `shell.png`는 화면 제작을 위해 새로 생성한 에셋입니다. 현재 공통 배경은 `seabed.png`입니다.
 
-소개는 편집할 수 있는 초안이며, Onul 및 New perspectives는 실제 경력을 나타내지 않는 콘셉트 예시입니다. Haevichi 카드 역시 실제 캡처 대신 CSS로 만든 예시 그래픽을 사용합니다. 공개 이메일이 제공되지 않아 연락 버튼은 안내 모달을 엽니다.
+Haevichi는 기존 https://github.com/glassbox71/haevichi-tt 저장소에 연결합니다. Onul과 New perspectives는 콘셉트 예시로 표시했습니다. 공개 이메일이 제공되지 않아 연락 버튼은 안내 모달을 엽니다. 실제 프로젝트 설명·프로필·연락 정보는 `index.html`과 `script.js`에서 수정할 수 있습니다.
 
-## 페이지 구성
+## GitHub Pages
 
-Intro → About → Portfolio → Contact 순서의 단일 페이지입니다. 메뉴를 누르면 해당 섹션으로 이동합니다.
-
-## GitHub
-
-대상 저장소: https://github.com/glassbox71/seonin
-
-GitHub에 소스를 업로드하는 것과 GitHub Pages에 웹사이트를 게시하는 것은 별개입니다. 정적 호스팅에서는 이 디렉터리의 `index.html`을 진입점으로 사용합니다.
-
-## 워터 인트로
-
-`water.css`와 `script.js`에 인트로를 구현했습니다. 약 3.3초 동안 아래에서 위로 물이 차오른 뒤 SEONIN 이니셜이 나타나고 SVG 굴절 필터와 부유 효과가 이어집니다. 다시 보기·일시정지 버튼을 지원하며, 모션 감소 설정에서는 정적인 이니셜을 바로 표시합니다. 화면 밖이나 숨겨진 탭에서는 굴절 프레임 갱신을 중단합니다.
-
-## 공개 미리보기 (GitHub Pages)
+저장소: https://github.com/glassbox71/seonin
 
 예정 주소: https://glassbox71.github.io/seonin/
 
-GitHub 저장소 Settings → Pages → Build and deployment에서 Source를 **Deploy from a branch**, Branch를 **main**, 경로를 **/(root)**로 선택하고 Save 하세요. `.nojekyll`이 포함되어 있어 정적 파일 그대로 게시됩니다. 이 주소는 Pages가 활성화되고 배포가 끝난 뒤 사용 가능합니다.
-
-## About 및 화면 전환
-
-제공된 About 스크린샷을 참고해 수중 배경, 오렌지 제목, 프로필·기술 태그, 하얀 돌고래를 배치했습니다. `assets/beluga.png`와 `assets/underwater.png`는 참조 구도에 맞춰 새로 생성한 에셋입니다. 인트로의 첫 아래 방향 마우스 휠 입력은 About 화면으로 이동합니다. 가로 스크롤과 확대 제스처, 모달에서는 해당 동작을 실행하지 않으며 이후 섹션은 기본 스크롤을 유지합니다. 모바일은 기본 터치 스크롤입니다. About 진입 시 돌고래가 나타나며 말풍선 버튼으로 다시 재생할 수 있습니다. 모션 감소 설정에서는 정적으로 표시합니다.
-
-인트로 하단과 About 상단은 동일한 `#7fc4ff` 색상을 기준으로 그라디언트로 연결했습니다. 이름 표기는 SEONIN으로 통일했습니다.
-
-추가 참조 주소 https://www.crechetank.com/ 는 현재 환경에서 HTTP 403으로 차단되어 확인하지 못했습니다. 해당 사이트의 화면 또는 영상 제공 시 시각 요소와 전환을 추가로 맞출 수 있습니다.
-
-## 최신 색상 및 Hero
-
-Hero와 About의 공통 물빛은 `theme.css`의 `--ocean-water: #a8d7ff`입니다. 물결 뒤쪽은 같은 하늘색 계열인 `--ocean-surface`, `--ocean-surface-light`를 사용합니다. About 수중 사진에는 파란색 틴트를 적용하고 동일한 경계색으로 연결했습니다. Hero는 흰색 굵은 SEONIN 타이포그래피와 About으로 이동하는 ENTER 버튼으로 구성했습니다. 물 채움 → 이름 등장·굴절 → About 이동·돌고래 등장 순서를 유지합니다.
-
-## Portfolio · Contact 수중 프레임
-
-전체 순서는 Intro → About → Portfolio → Contact입니다. 첨부된 후속 프레임을 참고해 `reef.css`에서 파란 수중 Portfolio와 산호 해저 Contact를 구현했습니다. Portfolio의 01·02·03 버튼은 프로젝트 선택을 바꾸고, 조개 버튼은 선택한 프로젝트의 상세 모달을 엽니다. 콘셉트 프로젝트는 예시임을 표시합니다. Contact에는 Skills 아이콘과 연락 안내 버튼을 함께 배치했습니다. 연락처를 임의로 만들지 않았으므로 실제 이메일은 아직 연결되지 않았습니다.
-
-`assets/shell.png` 및 `assets/seabed.png`는 이 화면을 위해 새로 생성한 에셋입니다. 각 프레임에 진입하면 돌고래와 조개가 등장하고, 모션 감소 설정에서는 정적으로 표시됩니다.
+GitHub Settings → Pages에서 Source를 **Deploy from a branch**, Branch를 **main**, 경로를 **/(root)**로 선택하면 정적 파일을 게시할 수 있습니다. `.nojekyll`을 포함합니다. Pages 활성화와 공개 주소 접속은 제작 환경에서 검증하지 못했습니다.

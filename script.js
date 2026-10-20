@@ -178,3 +178,16 @@ new IntersectionObserver(entries => {
     if (entry.isIntersecting) entry.target.classList.add('reef-entered');
   });
 }, { threshold: 0.15 }).observe(document.querySelector('#contact'));
+
+
+// Reveal the skills only when the shell itself reaches the viewport.
+const skillsClam = document.querySelector('#skills-clam');
+const clamObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) skillsClam.classList.add('skills-open');
+}, { threshold: 0.45 });
+clamObserver.observe(skillsClam);
+document.querySelector('#clam-replay').addEventListener('click', () => {
+  skillsClam.classList.remove('skills-open');
+  void skillsClam.offsetWidth;
+  skillsClam.classList.add('skills-open');
+});
